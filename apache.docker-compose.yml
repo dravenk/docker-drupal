@@ -26,10 +26,10 @@ services:
 ####### mariadb #######
   mariadb:
     image: mariadb
-    container_name: mariadb
+    container_name: ${MARIADB_NAME}
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: ${MARIADB_PASS}
     volumes:
         - ${PROJECT_PATH}/${MARIADB_PATH}/data:/var/lib/mysql
     networks:
@@ -37,7 +37,7 @@ services:
 ####### adminer #######
   adminer:
     image: adminer
-    container_name: adminer
+    container_name: ${ADMINER_NAME}
     restart: always
     ports:
       - 8080:8080
