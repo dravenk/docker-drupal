@@ -1,3 +1,5 @@
 web
 nginx/conf.d/*
 !nginx/conf.d/webapp.conf.example
+.env
+docker-compose.yml
