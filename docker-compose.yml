@@ -1,0 +1,48 @@
+version: '3.1'
+
+services:
+####### nginx #######
+  nginx:
+    container_name: ${NGINX_NAME}
+    image: nginx
+    ports:
+      - "${NGINX_PORT}:80"
+    environment:
+      - NGINX_PORT=80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - backend
+####### dp #######
+  dp:
+    image: drupal
+    container_name: ${DP_NAME}
+    volumes:
+      - ${PROJECT_PATH}/${WEB_PATH}/dp:/var/www/html
+      - ${PROJECT_PATH}/${APACHE_CONF}:/etc/apache2/sites-available/000-default.conf:ro
+    networks:
+      - backend
+
+####### mariadb #######
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+        - ${PROJECT_PATH}/${MARIADB_PATH}/data:/var/lib/mysql
+    networks:
+      - backend
+####### adminer #######
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - backend
+####### networks #######
+networks:
+  backend:
