@@ -23,6 +23,7 @@ EXPOSE 80
 EXPOSE 443
 
 COPY ./conf.d/site.conf /etc/nginx/conf.d/
+COPY php-upload.ini /usr/local/etc/php/conf.d/php-uploads.ini
 COPY entrypoint.sh /etc/entrypoint.sh
 
 ENTRYPOINT ["sh", "/etc/entrypoint.sh"]
