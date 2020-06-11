@@ -4,3 +4,4 @@ nginx/conf.d/*
 .env
 docker-compose.yml
 temp
+storage

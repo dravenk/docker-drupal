@@ -1,27 +1,17 @@
 version: '3.1'
 
 services:
-
-  web:
-    container_name: ${NGINX_NAME}
-    image: nginx
+  dp:
+    container_name: ${DP_NAME}
+    image: dravenk/dp-web
     ports:
-      - "${NGINX_PORT}:80"
+      - "${DP_PORT}:80"
     environment:
-      - NGINX_PORT=80
+      - DP_PORT=80
     volumes:
-      - ./web/phpapp:/var/www/phpapp
-      - ./config/phpapp.conf:/etc/nginx/conf.d/site.conf
-    networks:
-      - backend
-    depends_on:
-      - php
-
-  php:
-    image: php:fpm
-    container_name: ${PHP_NAME}
-    volumes:
-      - ./web/phpapp:/var/www/phpapp
+      ## If dp project not exit, please create a project into web folder.
+      ## `composer create-project drupal/recommended-project dp "^9.0" -vvv`
+      - ./web/dp:/var/www/html
     networks:
       - backend
 
@@ -36,6 +26,7 @@ services:
       - ${PROJECT_PATH}/${MARIADB_PATH}/data:/var/lib/mysql
     networks:
       - backend
+
 ####### adminer #######
   adminer:
     image: adminer
