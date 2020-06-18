@@ -1,5 +1,9 @@
 FROM drupal:fpm
 
+# set timezone
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update -y \
     && apt-get install -y git vim nginx \
     && apt-get clean
