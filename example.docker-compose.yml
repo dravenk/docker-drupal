@@ -1,6 +1,17 @@
 version: '3.1'
 
 services:
+  nginx:
+    container_name: ${NGINX_NAME}
+    image: nginx
+    volumes:
+      - ${PROJECT_PATH}/${NGINX_CONFD}:/etc/nginx/conf.d
+      - ${PROJECT_PATH}/${NGINX_CERTS}:/etc/nginx/certs
+    ports:
+      - "${NGINX_PORT}:80"
+      - "${NGINX_SSL_PORT}:443"
+    networks:
+      - backend
   dp:
     container_name: ${DP_NAME}
     image: dravenk/dp-web
