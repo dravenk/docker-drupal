@@ -17,8 +17,6 @@ services:
     image: dravenk/dp-web
     ports:
       - "${DP_PORT}:80"
-    environment:
-      - DP_PORT=80
     volumes:
       ## If dp project not exit, please create a project into web folder.
       ## `composer create-project drupal/recommended-project dp "^9.0" -vvv`
