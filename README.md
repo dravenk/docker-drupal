@@ -8,6 +8,7 @@ cp example.env .env
 cp example.docker-compose.yml docker-compose.yml  
 cp nginx/conf.d/app.conf.example nginx/conf.d/app.conf  
 docker-compose up -d  
+ 
 ```
 In this example, the files and directory structure are as follows.
 ```

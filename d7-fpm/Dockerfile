@@ -5,8 +5,12 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update -y \
-    && apt-get install -y git vim nginx \
-    && apt-get clean
+    && apt-get install -y git vim mariadb-client nginx \
+    && apt-get clean \
+	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	rm -rf /var/lib/apt/lists/* \
+    ## Adding bcmath for contrib module like drupal/commerce
+    && docker-php-ext-install bcmath
 
 ENV DRUSH_VERSION 8.3.5
     ## Install composer
