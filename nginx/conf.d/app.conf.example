@@ -1,0 +1,11 @@
+upstream dp{
+    server dp;
+}
+
+server {
+    listen 80;
+    server_name ~. "";
+    location / {
+        proxy_pass http://dp;
+    }
+}
