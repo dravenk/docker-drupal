@@ -16,7 +16,7 @@ services:
       - backend
   dp:
     container_name: ${DP_NAME}
-    image: dravenk/dp-web:latest
+    image: dravenk/dp:web
     networks:
       - backend
     ## It can be forwarded to this container by Nginx, 
