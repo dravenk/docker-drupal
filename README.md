@@ -14,7 +14,7 @@ docker-compose up -d
 You can use drush command to install drupal quickly after you run docker container.
 Replace `example` with the `MARIADB_PASS` password you set in the `.env` file.
 ```
-docker exec -it dp drush --db-url=mysql://root:example@mariadb/dp -vy
+docker exec -it dp drush si --db-url=mysql://root:example@mariadb/dp -vy
 ```
 
 ### Directory structure
