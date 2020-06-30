@@ -1,6 +1,17 @@
 ## docker-app
-In this project, common development and management tools such as Composer/Drush/Drupal-Console are used through the Drupal integration. You can copy a few lines of command to easily set up a project, including the nginx/drupal/mariadb/adminer.
+This is an example of creating a [Drupal](drupal.org) project using [docker-compose](https://docs.docker.com/compose/). In this project, common development and management tools such as Composer/Drush/Drupal-Console are used through the drupal integration. You can copy a few lines of command to easily set up a project, including the nginx/drupal/mariadb/adminer.
 
+### Create Drupal project
+In order to avoid the loss of resources such as images in the website, it is highly recommended to mount all the contents of the website to the hard disk. Create projects using [Composer](https://getcomposer.org/)
+```
+mkdir web && composer create-project drupal/recommended-project web/dp "^9.0" -vvv
+```
+Or copy a project from the Docker container
+```
+docker run --name dp -d dravenk/dp:web && 
+mkdir web && docker cp dp:/var/www/html web/dp &&
+docker rm -f dp
+```
 ### Easy to use.
 Just need copy the sample file and customize some of the content, sush as changing the database password in the environment variable.
 ```
