@@ -8,8 +8,8 @@ composer create-project drupal/recommended-project web/dp "^9.0" -vvv
 ```
 Or copy a project from the Docker container
 ```
-sudo docker run --name dp -d dravenk/dp:web ;
-mkdir web && sudo docker cp dp:/var/www/html web/dp ;
+sudo docker run --name dp -d dravenk/dp:web;
+mkdir -p web && sudo docker cp dp:/var/www/html web/dp;
 sudo docker rm -f dp
 ```
 ### Easy to use.
@@ -18,14 +18,14 @@ Just need copy the sample file and customize some of the content, sush as changi
 cp example.env .env  
 cp example.docker-compose.yml docker-compose.yml  
 cp nginx/conf.d/app.conf.example nginx/conf.d/app.conf  
-docker-compose up -d  
+sudo docker-compose up -d  
 ```
 
 ### Quick install
 You can use drush command to install drupal quickly after you run docker container.
 Replace `example` with the `MARIADB_PASS` password you set in the `.env` file.
 ```
-docker exec -it dp drush si --db-url=mysql://root:example@mariadb/dp -vy
+sudo docker exec -it dp drush si --db-url=mysql://root:example@mariadb/dp -vy
 ```
 
 ### Directory structure
