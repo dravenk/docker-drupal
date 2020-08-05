@@ -19,7 +19,7 @@ services:
   ## so the container's exposed port is not required
   dp:
     container_name: ${DP_NAME}
-    image: dravenk/dp:web
+    image: dravenk/dp:latest
     networks:
       - backend
     ports:
