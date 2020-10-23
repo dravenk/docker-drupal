@@ -46,6 +46,15 @@ storage
   mariadb
     data              // Database content for your site
 ```
+
+### Enable SSL for drupal 
+Adding these config to settings.php
+```
+$_SERVER['HTTPS'] = 'on';
+$_SERVER['SERVER_PORT'] = 443;
+$settings['reverse_proxy'] = TRUE;
+$settings['reverse_proxy_addresses'] = array($_SERVER['REMOTE_ADDR']);
+```
 ## Tips
 If you want any users to use command `docker` instand of `sudo docker`, you can add them to the docker group as well, e.g.
 ```
