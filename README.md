@@ -18,7 +18,7 @@ composer create-project drupal/recommended-project web/dp "^9.0" -vvv
 Or copy a project from the Docker container
 ```
 docker run --name dp -d dravenk/dp:web;
-mkdir -p web; docker cp dp:/var/www/html web/dp;
+mkdir -p web; docker cp dp:/opt/drupal web/dp;
 docker rm -f dp
 ```
 
