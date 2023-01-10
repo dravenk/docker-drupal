@@ -4,16 +4,16 @@ This is an example of creating a [Drupal](drupal.org) project using [docker-comp
 ### Easy to use.
 Just need copy the sample file and customize some of the content, sush as changing the database password in the environment variable.
 ```
-cp example.env .env  
-cp example.docker-compose.yml docker-compose.yml  
-cp nginx/conf.d/app.conf.example nginx/conf.d/app.conf  
-docker-compose up -d  
+cp example.env .env
+cp example.docker-compose.yml docker-compose.yml
+cp nginx/conf.d/app.conf.example nginx/conf.d/app.conf
+docker-compose up -d
 ```
 
 ### Create Drupal project
 In order to avoid the loss of resources such as images in the website, it is highly recommended to mount all the contents of the website to the hard disk. Create projects using [Composer](https://getcomposer.org/)
 ```
-composer create-project drupal/recommended-project web/dp "^9.0" -vvv
+composer create-project drupal/recommended-project web/dp10 "^10.0" -vvv
 ```
 Or copy a project from the Docker container
 ```
@@ -35,7 +35,7 @@ docker exec -it dp drush cr
 In this example, the files and directory structure are as follows.
 ```
 .env                  // Environment variable files that hold content such as database passwords.
-docker-compose.yml    // 
+docker-compose.yml    //
 nginx/
   conf.d/
     app.conf          // The nginx configuration file is responsible for representing the entire project
@@ -47,7 +47,7 @@ storage
     data              // Database content for your site
 ```
 
-### Enable SSL for drupal 
+### Enable SSL for drupal
 Adding these config to settings.php
 ```
 $_SERVER['HTTPS'] = 'on';
