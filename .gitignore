@@ -5,3 +5,5 @@ nginx/conf.d/*.conf
 docker-compose.yml
 temp
 storage
+config
+nginx/*
