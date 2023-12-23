@@ -1,6 +1,4 @@
 web
-nginx/conf.d/*.conf
-!nginx/conf.d/webapp.conf.example
 .env
 docker-compose.yml
 temp

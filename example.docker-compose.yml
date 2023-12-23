@@ -1,25 +1,24 @@
 version: '3.1'
 
 services:
-  nginx:
-    container_name: ${NGINX_NAME}
-    image: nginx:latest
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    network_mode: host
+    restart: always
+    cap_add:
+      - NET_ADMIN
     volumes:
-      - ${PROJECT_PATH}/${NGINX_CONFD}:/etc/nginx/conf.d
-      ## You can mount the SSL certificate file into a container.
-      ## Copy and customize ./nginx/conf.d/ssl.conf.example.
-      #- ${PROJECT_PATH}/${NGINX_CERTS}:/etc/nginx/certs
-    ports:
-      - "${NGINX_PORT}:80"
-      # - "443:443"
-    networks:
-      - backend
-      
+      - $PWD/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/caddy/site:/srv
+      - $PWD/caddy/caddy_data:/data
+      - $PWD/caddy/caddy_config:/config
+
   ## It can be forwarded to this container by Nginx, 
   ## so the container's exposed port is not required
   dp:
     container_name: ${DP_NAME}
-    image: dravenk/dp:latest
+    image: dravenk/drupal:latest
     networks:
       - backend
     ports:
@@ -39,16 +38,6 @@ services:
       - ${PROJECT_PATH}/${MARIADB_PATH}/data:/var/lib/mysql
     networks:
       - backend
-
-####### adminer ######### A simple database management web app.
-  # adminer:
-  #   image: adminer:latest
-  #   container_name: ${ADMINER_NAME}
-  #   restart: always
-  #   ports:
-  #     - "${ADMINER_PORT}:8080"
-  #   networks:
-  #     - backend
 
 networks:
   backend:
