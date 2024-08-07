@@ -1,6 +1,6 @@
 ## docker-drupal
 
-This is an example of creating a [Drupal](drupal.org) project using [docker-compose](https://docs.docker.com/compose/). In this project, common development and management tools such as Composer/Drush/Drupal-Console are used through the drupal integration. You can copy a few lines of command to easily set up a project, including the nginx/drupal/mariadb/adminer. The default `drush` command exec by `drush-launcher`, if you still want to use the drush 8, just use command `drush8`.
+This is an example of creating a [Drupal](drupal.org) project using [docker compose](https://docs.docker.com/compose/). In this project, common development and management tools such as Composer/Drush/Drupal-Console are used through the drupal integration. You can copy a few lines of command to easily set up a project, including the nginx/drupal/mariadb/adminer. The default `drush` command exec by `drush-launcher`, if you still want to use the drush 8, just use command `drush8`.
 
 ### Easy to use.
 
@@ -9,7 +9,7 @@ Just need copy the sample file and customize some of the content, sush as changi
 ```
 cp example.env .env
 cp example.docker-compose.yml docker-compose.yml
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Create Drupal project
@@ -17,7 +17,7 @@ docker-compose up -d
 In order to avoid the loss of resources such as images in the website, it is highly recommended to mount all the contents of the website to the hard disk. Create projects using [Composer](https://getcomposer.org/)
 
 ```
-composer create-project drupal/recommended-project web/dp10 "^10.0" -vvv
+composer create-project drupal/recommended-project web/dp11 "^11.0" -vvv
 ```
 
 Or copy a project from the Docker container

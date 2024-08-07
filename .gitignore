@@ -5,3 +5,5 @@ temp
 storage
 config
 nginx/*
+caddy/caddy_data
+caddy/caddy_config
